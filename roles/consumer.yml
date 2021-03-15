@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: consumer
+  namespace: evoresult
+spec:
+  hostNetwork: true
+  containers:
+    - name: consumer
+      image: ghcr.io/s21deniss/evoresultconsumer:latest

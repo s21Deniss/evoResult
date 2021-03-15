@@ -15,10 +15,11 @@ import (
 
 func main() {
 
-	broker := "192.168.50.100"
-	group := "consumer"
-	inputTopic := "input"
-	outputTopic := "output"
+	broker := getEnv("KAFKA_BROKER", "192.168.50.100")
+	group := getEnv("KAFKA_CONSUMER_GROUP", "consumer")
+	inputTopic := getEnv("KAFKA_TOPIC_IN", "input")
+	outputTopic := getEnv("KAFKA_TOPIC_OUT", "output")
+
 	sigchan := make(chan os.Signal, 1)
 	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
 
@@ -146,4 +147,12 @@ func KafkaProduce(broker string, OutTopic string, value string) {
 	}
 	close(deliveryChan)
 	producer.Close()
+}
+
+func getEnv(key, fallback string) string {
+	value, exists := os.LookupEnv(key)
+	if !exists {
+		value = fallback
+	}
+	return value
 }

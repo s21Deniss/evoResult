@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: producer
+  namespace: evoresult
+spec:
+  hostNetwork: true
+  containers:
+    - name: producer
+      image: ghcr.io/s21deniss/evoresultproducer:latest

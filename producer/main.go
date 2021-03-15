@@ -12,10 +12,10 @@ import (
 
 func main() {
 
-	broker := "192.168.50.100"
-	topic := "input"
-	replicationFactor := 1
-	numParts := 1
+	broker := getEnv("KAFKA_BROKER", "192.168.50.100")
+	topic := getEnv("KAFKA_TOPIC_IN", "input")
+	replicationFactor, _ := strconv.Atoi(getEnv("KAFKA_replicationFactor", "1"))
+	numParts, _ := strconv.Atoi(getEnv("KAFKA_numParts", "1"))
 
 	fmt.Print("Hello from producer\n")
 	p, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": broker})
@@ -85,4 +85,12 @@ func KafkaMakeTopic(broker string, topic string, replicationFactor int, numParts
 
 	a.Close()
 
+}
+
+func getEnv(key, fallback string) string {
+	value, exists := os.LookupEnv(key)
+	if !exists {
+		value = fallback
+	}
+	return value
 }

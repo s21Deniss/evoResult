@@ -20,6 +20,28 @@ Vagrant.configure("2") do |config|
         v.cpus = CPU
     end
 
+    # kafka vm
+    config.vm.define "kafka" do |kafka|
+
+        # Hostname and network config
+        kafka.vm.box = IMAGE_NAME
+        kafka.vm.network "private_network", ip: "#{NODE_NETWORK_BASE}.100"
+        kafka.vm.hostname = "kafka"
+
+        # Ansible role setting
+        kafka.vm.provision "ansible" do |ansible|
+
+            # Ansbile role that will be launched
+            ansible.playbook = "roles/kafka.yml"
+
+
+            # Overload Anqible variables
+            ansible.extra_vars = {
+                node_ip: "#{NODE_NETWORK_BASE}.100"
+            }
+        end
+    end
+        
     # Master node config
     config.vm.define MASTER_NAME do |master|
         
@@ -78,27 +100,5 @@ Vagrant.configure("2") do |config|
             end
         end
     end
-
-    # Worker node config
-        config.vm.define "kafka" do |kafka|
-
-            # Hostname and network config
-            kafka.vm.box = IMAGE_NAME
-            kafka.vm.network "private_network", ip: "#{NODE_NETWORK_BASE}.100"
-            kafka.vm.hostname = "kafka"
-
-            # Ansible role setting
-            kafka.vm.provision "ansible" do |ansible|
-
-                # Ansbile role that will be launched
-                ansible.playbook = "roles/kafka.yml"
-
-
-                # Overload Anqible variables
-                ansible.extra_vars = {
-                    node_ip: "#{NODE_NETWORK_BASE}.100"
-                }
-            end
-        end
     
 end

@@ -1,0 +1,4 @@
+- hosts: masters
+  become: yes
+  roles:
+    - role: k8s.setup
