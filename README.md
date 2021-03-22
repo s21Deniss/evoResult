@@ -8,7 +8,8 @@
 
 ```
 vagrant up
-``` will do every completed task
+``` 
+will do every completed task
 
 - [x] 1. Create Kubernetes cluster using Vagrant in VirtualBox VM (or multiple VMs) using method you prefer
   - > **RESULT** took base roles and vagrantfile from [https://github.com/hajdaini/k8s-cluster-vagrant-ansible]
