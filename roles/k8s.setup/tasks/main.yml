@@ -1,14 +1,15 @@
-# - name: Create namespace
-#   become: true
-#   shell: "kubectl create namespace evoresult --kubeconfig=/home/vagrant/.kube/config"
-
-- name: Copy the join command to server location
+- name: Create namespace
   become: true
-  copy: src=consumer.yml dest=/home/vagrant/consumer.yml
+  shell: "kubectl create namespace evoresult --kubeconfig=/home/vagrant/.kube/config"
 
-- name: Copy the join command to server location
-  become: true
-  copy: src=producer.yml dest=/home/vagrant/producer.yml
+- name: Copy files to vm
+  copy:
+    src: "{{item}}"
+    dest: "/home/vagrant/"
+  with_items:
+    - "producer.yml"
+    - "consumer.yml"
+
 
 - name: Deploy consumer
   become: true

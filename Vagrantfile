@@ -1,6 +1,3 @@
-# ####################################################################
-# ################### CONFIGURATION VARIABLES ########################
-# ####################################################################
 IMAGE_NAME = "bento/ubuntu-18.04"   # Image to use
 MEM = 8192                          # Amount of RAM
 CPU = 2                             # Number of processors (Minimum value of 2 otherwise it will not work)

@@ -9,12 +9,6 @@
         minor: 0
         patch: 8
         b: 10
-    # - role: macunha1.confluent_kafka
     - role: idealista.zookeeper_role
     - role: sleighzy.kafka
       kafka_listener_hostname: "192.168.50.100"
-    
-  # vars:
-  #   default_kafka_topics:
-  #     - name: input
-  #     - name: output
