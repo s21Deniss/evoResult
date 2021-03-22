@@ -2,9 +2,9 @@
   become: yes
   roles:
     - role: master
-    # - role: k8s.setup
 
 - hosts: workers
   become: yes
   roles:
     - role: worker
+    - role: k8s.setup

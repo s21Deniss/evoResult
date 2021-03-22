@@ -3,3 +3,13 @@
 
 - name: Join the node to cluster
   command: sh /tmp/join-command.sh
+
+- name: Setup kubeconfig for vagrant user
+  shell: "mkdir -p /home/vagrant/.kube"
+ 
+
+- name: Copy kubeconfig
+  copy: src=kubeconfig dest=/home/vagrant/.kube/config
+
+- name: fix permissions
+  shell: "chown vagrant:vagrant /home/vagrant/.kube/config"

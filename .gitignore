@@ -1,5 +1,5 @@
 .vagrant/
-./roles/join-command
+*/join-command
+*/kubeconfig
 kubectl
-
 */vendor/*
