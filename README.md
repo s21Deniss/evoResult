@@ -1,9 +1,6 @@
 # Task list
 ## keep in mind i have only minor expirince with kubernetes and most of it is just wrinting scripts for kubectl
 
-## total work time around 8h
-## time wasted on debugging/reasech around 20h
-
 ### box acess  `vagrant:vagrant`
 
 ```
