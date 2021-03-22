@@ -25,14 +25,16 @@ will do every completed task
 - [x] 5. Deploy both applications (producer and consumer) to k8s cluster
 - > **RESULT** see `roles/k8s.setup/tasks/main.yml`
 - [ ] 6. ~~Install Prometheus, Grafana to k8s cluster~~
-- > **RESULT** din't have enought free time last week to figure it out
+- > **RESULT** didn't have enought free time last week to figure it out
 - [ ] ~~7. Find a way to export Kafka metrics and metrics from 
 applications (producer, consumer) to Prometheus and visualize them using Grafana dashboard~~
-- > **RESULT** din't have enought free time last week to figure it out (no prior expirince with kubernetes)
+- > **RESULT** didn't have enought free time last week to figure it out (no prior expirince with kubernetes)
 - [x] Requirements:
   - [x] 8.  VM, k8s cluster, Kafka, your application, Prometheus and Grafana deployment/provisioning/configuration MUST be automated (by any means, preferably Ansible)
+  - > **RESULT** uses ansible
   - [x] 9. Solution MUST NOT require installation of any additional packages on host machine except VirtualBox and Vagrant
+  - > **RESULT** not sure might requre ansible ? dont know how `kafka.vm.provision "ansible"` works
   - [ ] ~~10. Basic documentation MUST be provided (how-to connect to cluster, access metrics and so on)~~
-  - > **RESULT** din't have enought free time last week
+  - > **RESULT** didn't have enought free time last week
   - [x] 11. Solution MUST run on host machine under any operating system
   - > **RESULT** dont have windows machine with vagrant/virtualbox to test
