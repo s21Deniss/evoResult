@@ -15,6 +15,7 @@ will do every completed task
 - [x] 3. Create 2 topics in Kafka called 'input' and 'output'
  - > decided to do this on the app side
 - [x] 4. Create consumer and producer program in any programming language (preferable Golang or Python)
+  - > **RESULT** i would have made a library for both of them to use instead of reusing code in 'real' application
   - [x] 4.1. make producer continuously write messages to 'input' topic with epoch timestamp in MS
    - > **RESULT** see `consumer/`
   - [x] 4.2. make consumer that reads from 'input' topic, transforms input message to date string (must be in RFC 3339) and sends to topic 'output'
