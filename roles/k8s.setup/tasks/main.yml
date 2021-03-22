@@ -1,6 +1,6 @@
-- name: Create namespace
-  become: true
-  shell: "kubectl create namespace evoresult --kubeconfig=/home/vagrant/.kube/config"
+# - name: Create namespace
+#   become: true
+#   shell: "kubectl create namespace evoresult --kubeconfig=/home/vagrant/.kube/config"
 
 - name: Copy files to vm
   copy:
