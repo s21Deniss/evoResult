@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
 	"time"
-	"unsafe"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 )
@@ -58,8 +58,9 @@ func main() {
 			case *kafka.Message:
 				fmt.Printf("%% Message on %s:\n%s\n",
 					e.TopicPartition, string(e.Value))
-
-				RFC3339 := time.Unix(ByteArrayToInt(e.Value), 0).Format(time.RFC3339)
+				dateString := string(e.Value)
+				dateInt64, _ := strconv.ParseInt(dateString, 10, 64)
+				RFC3339 := time.Unix(dateInt64, 0).Format(time.RFC3339)
 				KafkaProduce(broker, outputTopic, RFC3339)
 				if e.Headers != nil {
 					fmt.Printf("%% Headers: %v\n", e.Headers)
@@ -77,15 +78,6 @@ func main() {
 
 	fmt.Printf("Closing consumer\n")
 	c.Close()
-}
-
-func ByteArrayToInt(arr []byte) int64 {
-	val := int64(0)
-	size := len(arr)
-	for i := 0; i < size; i++ {
-		*(*uint8)(unsafe.Pointer(uintptr(unsafe.Pointer(&val)) + uintptr(i))) = arr[i]
-	}
-	return val
 }
 
 func KafkaMakeTopic(broker string, topic string, replicationFactor int, numParts int) {
